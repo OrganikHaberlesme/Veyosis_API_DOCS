@@ -342,7 +342,7 @@ Reponse Body:
 
 Çoklu İzin Ekleme metoduyla eklenen izinlerin durumu kontrol edilir.
 
-Kontrol işlemi [Çoklu İzin Ekleme](#operation/consentAsync) metodundan dönen `transaction` değeri ile yapılır
+Kontrol işlemi [Çoklu İzin Ekleme](#çoklu-i̇zin-ekleme) metodundan dönen `transaction` değeri ile yapılır
 
 Çoklu veri ekleme sonuçları sistemde **1**(bir) hafta tutulur.
 
@@ -397,28 +397,61 @@ Reponse Body:
 | 402 | Payment Required |
 | 404 | Not Found |
 
-> `API_URL` /report/single/{brand}
-
-#### POST
-##### Summary:
-
-Tekil İzin Sorgulama
-
-##### Description:
+## Tekil İzin Sorgulama
 
 Tek bir iznin durumunu kontrol eden metoddur.
 
+> `API_URL` /report/single/{brand}
+
+### Örnek İstek Gövdesi
+Response Headers:
+```
+Method:       POST
+Status:       200 OK
+URL:          /report/single/{brand}
+Content-Type: application/json
+```
+Reponse Body:
+```
+{
+  "type": "EPOSTA",
+  "recipientType": "BIREYSEL",
+  "recipient": "mail@example.com"
+}
+```
 ##### Parameters
 
-| Name | Located in | Description | Required | Schema |
+| Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
+| type | path | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
+| recipientType | path | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
+| recipient | path | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
 
-##### Responses
+### Başarılı Yanıt
+Response Headers:
+```
+Method:       POST
+Status:       200 OK
+URL:          /report/single/{brand}
+Content-Type: application/json
+```
+Reponse Body:
+```
+{
+  "recipient": "mail@example.com",
+  "type": "EPOSTA",
+  "source": "HS_FIZIKSEL_ORTAM",
+  "status": "ONAY",
+  "consentDate": "2020-12-18 07:07:09",
+  "recipientType": "BIREYSEL"
+}
+```
+
+##### Başarısız Yanıtlar
 
 | Code | Description |
 | ---- | ----------- |
-| 200 | İşlemi başarılı. |
 | 400 | Bad Request. |
 | 401 | Unauthorized |
 | 403 | Forbidden |
@@ -426,7 +459,7 @@ Tek bir iznin durumunu kontrol eden metoddur.
 | 422 | Unprocessable entity |
 | 500 | Internal Server Error |
 
-### /report/async/{brand}
+> `API_URL` /report/async/{brand}
 
 #### POST
 ##### Summary:
