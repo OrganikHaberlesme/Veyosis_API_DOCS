@@ -97,7 +97,7 @@ Oluşturduğunuz API kodunu endpointlere ulaşmak için gönderdiğiniz sorgular
 ## Kullanıcı Bilgileri
 Bu metot API Kodunun yetkili kullanıcısına ait bilgileri listeler.
 
-> `GET` `API_URL` /me
+> `API_URL` /me
 ### Başarılı Yanıt
 Response Headers:
 ```
@@ -109,20 +109,18 @@ Content-Type: application/json
 Reponse Body:
 ```
 {
-  "value": {
-    "data": {
-      "user": "Örnek Kullanıcı",
-      "username": "kullanici",
-      "email": "mail@example.com",
-      "company": "Örnek Firma Ltd.şti.",
-      "title": "Örnek API",
-      "permissions": [
-        "brand",
-        "consent",
-        "report"
-      ],
-      "ip": false
-    }
+  "data": {
+    "user": "Örnek Kullanıcı",
+    "username": "kullanici",
+    "email": "mail@example.com",
+    "company": "Örnek Firma Ltd.şti.",
+    "title": "Örnek API",
+    "permissions": [
+      "brand",
+      "consent",
+      "report"
+    ],
+    "ip": false
   }
 }
 ```
@@ -133,25 +131,66 @@ Reponse Body:
 | 402 | Payment Required |
 | 404 | Not Found |
 
-### /brand/get
+# MARKA İŞLEMLERİ
 
-#### GET
-##### Summary:
+Hizmet sağlayıcıya bağlı bulunan markaların listelemesi bu bölümde yapılmaktadır.
 
-Marka Listeleme
-
-##### Description:
-
-Bu metot yetkili markaları listelemek için kullanılır.
-Bu metodu kullanabilmek için API kullanıcısına `Marka İşlemleri` yetkisi verilmiş olması gerekmektedir.
+Panel Üzerinden pasifleştirdiğiniz markalarınızı görüntüleyemez ve işlem yapamazsınız.
+## Marka Listeleme
+Bu metot yetkili markaları listelemek için kullanılır. Bu metodu kullanabilmek için API kullanıcısına `Marka İşlemleri` yetkisi verilmiş olması gerekmektedir.
 
 Markalarınızın kodu, isimleri ve izinlerinizin cevabı döner.
 
-##### Responses
+> `API_URL` /brand/get
+### Başarılı Yanıt
+Response Headers:
+```
+Method:       GET
+Status:       200 OK
+URL:          /brand/get
+Content-Type: application/json
+```
+Reponse Body:
+```
+{
+  "data": {
+    "brands": [
+        {
+          "code": "00000",
+          "title": "Organik Haberleşme Teknolojileri bilişim san.ltd.şti.",
+          "permissions": {
+            "ARAMA": "write",
+            "MESAJ": "write",
+            "EPOSTA": "write"
+          },
+          "consents": {
+            "approval": 6479,
+            "rejection": 1,
+            "total": 6480
+          }
+        },
+        {
+          "code": "000001",
+          "title": "Organik haberleşme teknolojileri bilişim sanayi ltd.şti.",
+          "permissions": {
+            "ARAMA": "write",
+            "MESAJ": "write",
+            "EPOSTA": "write"
+          },
+          "consents": {
+            "approval": 0,
+            "rejection": 0,
+            "total": 0
+          }
+        }
+    ]
+  }
+}
+```
+### Başarısız Yanıtlar
 
 | Code | Description |
 | ---- | ----------- |
-| 200 | İşlem Başarılı |
 | 401 | Unauthorized |
 | 402 | Payment Required |
 | 404 | Not Found |
