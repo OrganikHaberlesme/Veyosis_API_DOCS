@@ -59,6 +59,20 @@ Hizmet sağlayıcının, ticari elektronik ileti gönderimi yaptığı iletişim
     - Bir e-posta adresinin uzunluğu en az 6, en fazla 265 karakter olabilir.
     - {@} işaretinden önceki kısımda, e-posta servis sağlayıcıların etiketleme (`label`) yapmak için kabul ettiği özel karakter olarak artı işareti ( + ) kullanılabilir.
     - Bir e-posta adresi boşluk içeremez.
+    
+|Değer| Açıklama|
+|-------------|---------------------|
+|`EPOSTA`|Alıcıların elektronik posta adreslerine ilişkin e-posta bazlı izinleri ifade eder.|
+
+## İzin Durumları
+Alıcının ticari elektronik ileti gönderimine ilişkin izin durumunu (onay/ret) belirtir.
+
+İzin Durumu(status) tablodaki değerleri alabilir.
+
+|Değer| Açıklama|
+|-------------|---------------------|
+|`ONAY`|Alıcının, hizmet sağlayıcının ticari elektronik ileti göndermesini onayladığını ifade eder.|
+|`RET`|Alıcının, hizmet sağlayıcının ticari elektronik ileti göndermesini onaylamadığını ifade eder.|
 
 > `API_URL` /me
 
