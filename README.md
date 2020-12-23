@@ -588,19 +588,150 @@ Reponse Body:
 | 402 | Payment Required |
 | 404 | Not Found |
 
-### Models
+# HATA KODLARI
 
+## VEYOSI API Hata Kodları
 
-#### errorResponses
+API isteklerinde cevap olarak dönülen hataların kodlarına ve hata mesajlarına bu bölümde ulaşabilirsiniz.
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| code | integer | Hata kodu. | No |
-| message | String | Hata kodu ayrıntılı bilgisi. | No |
+| Hata Kodu | Durum Kodu | Açıklama|
+|-----------|------------|---------------------------------------------------------------------------------------|
+|V014|400|Gönderilen istek JSON formatına uygun olmalıdır.|
+|V015|500|Beklenmedik bir hata oluştu.|
+|V082|400|Enum listeleme işlemi başarısız oldu.|
+|V083|429|Saniyede kabul edilen istek limitinine ulaşıldı. Lütfen daha sonra tekrar deneyiniz.|
+|V085|400|İzin ekleme isteği geçerli olmalıdır.|
+|V090|400|Bayi ekleme isteği geçerli olmalıdır.|
+|V091|422|İzin ekleme sayısı en fazla {{BATCH_CONSENT_COUNT}} olmalıdır.|
+|V092|400|Çoklu izin ekleme isteği geçerli olmalıdır.|
+|V093|422|{{transactionId}} bulunamadı.|
+|V095|400|İşlem (transaction) isteği geçerli olmalıdır.|
+|V097|400|İzin sorgulama isteği geçerli olmalıdır.|
+|V098|400|Günlük izin değişim sorgulama isteği geçerli olmalıdır.|
+|V100|500|Sunucuya kurtarma verisi kaydedilemedi.|
+|V101|500|Sunucuya esas veri kaydedilemedi.|
+|V102|500|Şifreleme işlemleri yapılamadı.|
+|V103|500|Sunucuda arama yapılamadı.|
+|V105|500|Şifre çözme işlemi başarısız oldu.|
+|V106|500|Durum raporu oluşturulamadı.|
+|V107|500|İzinler listelenemedi.|
+|V110|422|Durum (status) bulunamadı.|
+|V111|422|İzin tipi (type) bulunamadı.|
+|V112|422|İzin tarihi (consentDate) bulunamadı.|
+|V113|422|İzin kaynağı (source) bulunamadı.|
+|V114|422|Alıcı (recipient) bulunamadı.|
+|V115|422|Durum (status) için uygun değerler: ONAY, RET|
+|V116|422|Alıcı tipi (recipientType) için uygun değerler: BIREYSEL, TACIR|
+|V117|422|İzin tipi (type) için uygun değerler: ARAMA, MESAJ, EPOSTA|
+|V118|422|{{unacceptableField}} kabul edilemedi. İstek gövdesinde bulunabilecek değerler: recipientType, retailerAccess, recipient, retailerCode, source, type, consentDate, status olmalıdır.|
+|V119|422|İzin kaynağı (source) için uygun değerler: HS_FIZIKSEL_ORTAM, HS_ISLAK_IMZA, HS_WEB, HS_CAGRI_MERKEZI, HS_SOSYAL_MEDYA, HS_EPOSTA, HS_MESAJ, HS_MOBIL, HS_EORTAM, HS_ETKINLIK, HS_2015, HS_ATM, HS_KARAR|
+|V120|422|Alıcı (recipient) kabul edilemedi. Geçerli bir eposta adresi giriniz.|
+|V121|422|Alıcı (recipient) için E164 uluslararası([+][country code][area code][local phone number]) formatına uygun bir telefon numarası girilmelidir. (örn. +905992000000)|
+|V122|422|Alıcı (recipient) için E164 uluslararası ([+][country code][area code][local phone number]) formatına uygun bir telefon numarası (örn. +905992000000) ya da geçerli bir e-posta adresi girilmelidir.|
+|V123|400|Ulaşmaya çalıştığınız servis şu anda meşguldür. Lütfen daha sonra tekrar deneyiniz.|
+|V124|429|Saniyede kabul edilen istek limitine ulaşıldı. Lütfen daha sonra tekrar deneyiniz.|
+|V125|422|Tek seferde eklenecek izin sayısı en fazla 1000 olmalıdır.|
+|V126|422|İzin erişimi olan bayilerin (retailer) liste uzunluğu en fazla {{100|
+|V127|422|Alıcı listesi (recipients) uzunluğu en fazla 100 olmalıdır.|
+|V129|404|Entegratör:{{iysCode]} bulunamadı.|
+|V155|422|İzin kaynağı “1 Mayıs 2015 öncesi” olan izinler için, izin tarihi sadece 2015-05-01 00:00:00 olabilir.|
+|V156|422|İzinler için 1 Mayıs 2015’den önceki tarihler kabul edilmemektedir.|
+|V157|422|Geçerli bir tarih girilmelidir.|
+|V158|422|İzin tarihi yyyy-mm-dd hh:mm:ss formatında olmalıdır.|
+|V160|422|Alıcı için telefon numaraları 15 karakterden uzun olmamalıdır…|
+|V162|422|Mevcut tarih ve saatten ileri bir tarih ve saat girilmemelidir.|
+|V163|422|Bayiler (retailer) kabul edilemedi. Lütfen boş liste eklemeyiniz.|
+|V164|422|Alıcı listesi (recipients) kabul edilemedi. Liste boş olmamalıdır.|
+|V166|422|Alıcı (recipient) kabul edilemedi. Telefon numaraları 15 karakterden uzun olamaz.|
+|V168|422|Alıcı listesi (recipients) bulunamadı.|
+|V169|422|İzin erişimi olan bayiler (retailerAccess) bulunamadı.|
+|V170|422|Alıcı tipi (recipientType) bulunamadı.|
+|V171|400|Bayi izin erişimi vermek için geçerli bir istek gönderilmelidir.|
+|V172|400|Bayi izin erişimini silmek için geçerli bir istek gönderilmelidir.|
+|V173|400|Bayi izin erişimi sorgulamak için geçerli bir istek gönderilmelidir.|
+|V174|400|İzin durumu (status) güncellemesi için farklı bir durum girilmelidir. İzin durumu: {{ONAY \ RET}}|
+|V175|400|İlk defa kaydedilen bir iznin durum (status) bilgisi RET olmamalıdır.|
+|V176|400|Sadece admin hesabıyla işlem yapılabilir.|
+|V178|400|Sistemdeki iznin tarihinden önceki tarihli izinlerle güncelleme yapılamaz.|
+|V179|500|İzin tarihi karşılaştırması yapılamadı.|
+|V180|403|İstek gövdesinde yer alan bayi İYS numarasıyla (retailerCode) herhangi bir bayi bulunamadı.|
+|V181|500|Bayi bilgisi listelenemedi.|
+|V182|422|offset değeri geçerli olmalıdır.|
+|V183|422|limit değeri geçerli olmalıdır.|
+|V184|422|all değeri geçerli olmalıdır.|
+|V185|422|short değeri geçerli olmalıdır.|
+|V186|422|Sayfalama (pagination) değeri en fazla 100 olabilir.|
+|V187|422|Limit değerleri sıfır olmamalıdır.|
+|V190|422|iysCode integer bir değer olmalıdır.|
+|V191|422|brandCode integer bir değer olmalıdır.|
+|V192|503|İstek zaman aşımına uğradı.|
+|V193|422|{{Bayi kod \ Alıcı}} ({{retailerCode \ recipient}}) değeri liste içinde tekrarlanamaz.|
+|V194|422|İzin listede daha önce tanımlandı. Liste içinde izinler alıcı tipi (recipientType), tip (type) ve alıcı (recipient) değerleri için tekrarlanamaz.|
+|V195|403|Marka bilgisi için sunucuda arama yapılamadı.|
+|V196|403|Sunucudan iysCode bilgisi elde edilemedi.|
+|V197|422|Arama için kullanılacak karakter öbeği (text) bulunamadı.|
+|V198|422|requestId 36 karakterden daha uzun olamaz.|
+|V199|422|requestId sadece harflerden meydana gelemez.|
+|V241|400|Enum getirme işlemi başarısız oldu.|
+|V245|400|Verilen iysCode entegratör grubuna ait değildir!|
+|V250|400|Kullanıcı adı veya şifre eksik!|
+|V251|401|Kullanıcı kimlik bilgileri geçersiz!|
+|V252|400|Kimlik doğrulaması yapılamadı. Kimlik bilgileri eksik!|
+|V266|400|{{iysCode}} değeri istek üzerinde bulunamadı.|
+|V267|400|{{iysCode}} değeri boş olmamalıdır.|
+|V268|404|Verilen iysCode’una bağlı entegratör kullanıcısı bulunamadı!|
+|V351|401|Eksik veya geçersiz jeton!|
+|V353|403|{field}, kullanıcı izinleriyle eşleştirilemiyor|
+|V355|404|Kullanıcı da {type} yetkisi bulunmamaktadır!|
+|V363|400|Bu servisi kullanabilmek için yetkiniz bulunmamaktadır.|
+|V400|422|requestId sadece sayılardan meydana gelemez.|
+|V401|400|Bayi eklenmesi beklenen izin sistemde bulunmamaktadır.|
+|V402|400|Yetkili marka sorgulama isteği geçersizdir.|
+|V403|400|İzin durumu sorgulama isteği geçerli olmalıdır.|
+|V404|422|text en az bir karakter içermelidir.|
+|V405|400|Marka bilgisi sorgulama isteği geçerli olmalıdır.|
+|V408|422|HS_KARAR kaynağından iletilen izinler için durum bilgisi RET olmalıdır.|
+|V412|500|Beklenmedik bir hata oluştu.|
+|V450|422|İzin tipi (type) değeri geçerli olmalıdır.|
+|V452|422|İzin tipi (type) değeri [ARAMA, MESAJ] için beklenen izin kaynağı [IYS_CM, IYS_KISAMESAJ] olmalıdır.|
+|V453|422|Alıcı (recipient) {{recipient}} için gün içerisinde yapılan işlem sayısı 2'dir, daha fazla işlem yapılamamaktadır.|
+|V454|422|İzin kaydetme isteği için verilen istek id (requestId) geçerli olmalıdır.|
+|V455|422|İzin kaydetme isteği için verilen doğrulama kodu (verificationCode) geçerli olmalıdır.|
+|V456|422|İzin kaydetme isteği için verilen istek id (requestId) ile ilgili işlem bulunamadı.|
+|V459|422|Alıcı (recipiet) +905320000000 için beklenen izin tipi (type) değerleri [MESAJ, ARAMA] olmalıdır|
+|V460|422|Girilen veriler doğrulamadı.|
+|V462|400|TACIR izinleri güncellenirken izin tarihi (consentDate) verilmelidir|
+|V463|400|TACIR izinleri güncellenirken izin kaynağı (source) verilmelidir.|
+|V464|422|İzin tipi (type) MESAJ için, alıcı (recipient) telefon formatında olmalıdır.|
+|V465|422|Alıcı (recipient) {{recipient}} için 3 dk içinde yeni bir süreç başlatılamamaktadır|
+|V470|500|Beklenmedik bir hata oluştu.|
+||400|Kullanıcı kimlik bilgileri geçersiz.|
+||400|Giriş yöntemi belirtilmemiş.|
+||400|Bilinmeyen giriş yöntemi.|
+||400|Giriş yöntemi boş olamaz.|
+||400|Desteklenmeyen giriş yöntemi.|
+||400|Yenileme jetonu verilmemiş.|
+||400|Desteklenmeyen yenileme jetonu türü.|
+||400|Yenileme jetonu boş olamaz.|
+||400|Şifre null olamaz.|
+||400|Desteklenmeyen şifre türü.|
+||400|Şifre boş bırakılamaz.|
+||400|Kullanıcı adı null olamaz.|
+||400|Desteklenmeyen kullanıcı adı türü.|
+||400|Kullanıcı adı boş bırakılamaz.|
+||400|Beklenmeyen kullanıcı rolü: admin.|
 
-#### childItem
+## İsteğin Tekrar Gönderilmesi Gereken Hata Kodları
 
-| Name | Type |  Description | Required |
-| ---- | ---- | ----------- | -------- |
-| ProductNumber | string |  | No |
-| Length | integer |  | No |
+|Vata Kodu | Durum Kodu | Açıklama|
+|-----------|------------|---------------------------------------------------------------------------------------|
+|V015| 500| Beklenmedik bir hata oluştu.|
+|V101|500| Sunucuya esas veri kaydedilemedi.|
+|V102| 500| Şifreleme işlemleri yapılamadı.|
+|V103|500| Sunucuda arama yapılamadı.|
+|V123|400| Ulaşmaya çalıştığınız servis şu anda meşguldür. Lütfen daha sonra tekrar deneyiniz. |
+|V124| 429| Saniyede kabul edilen istek limitine ulaşıldı. Lütfen daha sonra tekrar deneyiniz.  |
+|V179| 500| İzin tarihi karşılaştırması yapılamadı.|
+|V192|503| İstek zaman aşımına uğradı.|
+|V412|500| Beklenmedik bir hataoluştu.|
+|V470|500| Beklenmedik bir hata oluştu.|
