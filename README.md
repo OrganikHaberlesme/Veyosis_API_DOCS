@@ -585,6 +585,7 @@ Reponse Body:
 
 | Code | Description |
 | ---- | ----------- |
+| 102 | İşlem devam ediyor |
 | 401 | Unauthorized |
 | 402 | Payment Required |
 | 404 | Not Found |
