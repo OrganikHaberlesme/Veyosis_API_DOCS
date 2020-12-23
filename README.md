@@ -199,37 +199,148 @@ Reponse Body:
 
 ## Tekil İzin Ekleme
 
-### /consent/single/{brand}
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
-
-|Değişken|Gereklilik|Tip|Açıklama|
-|-|-|-|-|
-|deliveries|Zorunlu|-|İstek gövdenizin ana elemanıdır. Tüm istekleriniz`data`etiketinin içinde olmalıdır.|
-
-Tekil İzin Ekleme
-
-##### Description:
-
 Vatandaştan alınan tek **bir** izni kaydeder.
 
+### /consent/single/{brand}
 
+### Örnek İstek Gövdesi
+Response Headers:
+```
+Method:       POST
+Status:       200 OK
+URL:          /consent/single/{brand}
+Content-Type: application/json
+```
+Reponse Body:
+```
+{
+  "type": "EPOSTA",
+  "recipientType": "BIREYSEL",
+  "recipient": "mail@example.com",
+  "source": "HS_FIZIKSEL_ORTAM",
+  "consentDate": "2020-12-18 07:07:09",
+  "status": "ONAY"
+}
+```
+##### Parameters
 
-##### Responses
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
+| recipient | path | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
+| type | path | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
+| source | path | Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir. | Yes | string |
+| status | path | Vatandaşın izin durumunu gösterir. | Yes | string |
+| consentDate | path | İznin, vatandaştan alındığı tarihtir. | Yes | string |
+| recipientType | path | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
+
+### Başarılı Yanıt
+Response Headers:
+```
+Method:       POST
+Status:       200 OK
+URL:          /consent/single/{brand}
+Content-Type: application/json
+```
+Reponse Body:
+```
+{
+  "data": {
+    "result": true
+  }
+}
+```
+
+##### Başarısız Yanıtlar
 
 | Code | Description |
 | ---- | ----------- |
-| 200 | İzin ekleme işlemi başarılı. |
 | 400 | Bad Request. |
 | 401 | Unauthorized |
 | 403 | Forbidden |
 | 404 | Not Found |
 | 422 | Unprocessable entity |
 | 500 | Internal Server Error |
+
+
+# XXXXXXXXXXXXXXXX
+
+## Çoklu İzin Ekleme
+
+**Tek** markaya asenkron bir şekilde çoklu izin ekler.
+
+### /consent/async/{brand}
+
+### Örnek İstek Gövdesi
+Response Headers:
+```
+Method:       POST
+Status:       200 OK
+URL:          /consent/async/{brand}
+Content-Type: application/json
+```
+Reponse Body:
+```
+[
+  {
+    "type": "MESAJ",
+    "recipientType": "BIREYSEL",
+    "recipient": "905000000001",
+    "source": "HS_FIZIKSEL_ORTAM",
+    "consentDate": "2020-12-10 10:00:00",
+    "status": "RET"
+  },
+  {
+    "type": "EPOSTA",
+    "recipientType": "BIREYSEL",
+    "recipient": "mail@example.com",
+    "source": "HS_2015",
+    "consentDate": "2015-05-01 00:00:00",
+    "status": "ONAY"
+  }
+]
+```
+##### Parameters
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
+| recipient | path | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
+| type | path | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
+| source | path | Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir. | Yes | string |
+| status | path | Vatandaşın izin durumunu gösterir. | Yes | string |
+| consentDate | path | İznin, vatandaştan alındığı tarihtir. | Yes | string |
+| recipientType | path | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
+
+### Başarılı Yanıt
+Response Headers:
+```
+Method:       POST
+Status:       200 OK
+URL:          /consent/async/{brand}
+Content-Type: application/json
+```
+Reponse Body:
+```
+{
+  "data": {
+    "transaction": 47
+  }
+}
+```
+
+##### Başarısız Yanıtlar
+
+| Code | Description |
+| ---- | ----------- |
+| 400 | Bad Request. |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+| 422 | Unprocessable entity |
+| 500 | Internal Server Error |
+
+# YYYYYYY
 
 ### /consent/async/{brand}
 
@@ -257,12 +368,7 @@ Metotdan dönen `transaction` değeri ile [Çoklu İzin Ekleme Durumu](#operatio
 | Code | Description |
 | ---- | ----------- |
 | 200 | İzin ekleme işlemi başarılı. |
-| 400 | Bad Request. |
-| 401 | Unauthorized |
-| 403 | Forbidden |
-| 404 | Not Found |
-| 422 | Unprocessable entity |
-| 500 | Internal Server Error |
+
 
 ### /consent/status/{transaction}
 
