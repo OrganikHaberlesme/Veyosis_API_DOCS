@@ -126,15 +126,9 @@ Reponse Body:
   }
 }
 ```
-
-Bu metot API Kodunun yetkili kullanıcısına ait bilgileri listeler.
-
-##### Responses
-
-
+### Başarısız Yanıtlar
 | Code | Description |
 | ---- | ----------- |
-| 200 | İşlem Başarılı |
 | 401 | Unauthorized |
 | 402 | Payment Required |
 | 404 | Not Found |
