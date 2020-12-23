@@ -98,13 +98,13 @@ Oluşturduğunuz API kodunu endpointlere ulaşmak için gönderdiğiniz sorgular
 Bu metot API Kodunun yetkili kullanıcısına ait bilgileri listeler.
 
 > `GET` `API_URL` /me
-# Başarılı Yanıt
-## JSON
+### Başarılı Yanıt
 Response Headers:
 ```
 Method:       GET
 Status:       200 OK
 URL:          /me
+Content-Type: application/json
 ```
 Reponse Body:
 ```
