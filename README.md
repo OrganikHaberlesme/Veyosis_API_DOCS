@@ -94,7 +94,38 @@ Eğer API kodunuz yoksa;
 ## API Bağlantısı
 Oluşturduğunuz API kodunu endpointlere ulaşmak için gönderdiğiniz sorgulara `Authorization` header'ı olarak `Bearer XYZXYZXYZ` şeklinde eklemeniz gerekiyor.
  
-> `API_URL` /me
+## Kullanıcı Bilgileri
+Bu metot API Kodunun yetkili kullanıcısına ait bilgileri listeler.
+
+> `GET` `API_URL` /me
+# Başarılı Yanıt
+## JSON
+Response Headers:
+```
+Method:       GET
+Status:       200 OK
+URL:          /me
+```
+Reponse Body:
+```
+{
+  "value": {
+    "data": {
+      "user": "Örnek Kullanıcı",
+      "username": "kullanici",
+      "email": "mail@example.com",
+      "company": "Örnek Firma Ltd.şti.",
+      "title": "Örnek API",
+      "permissions": [
+        "brand",
+        "consent",
+        "report"
+      ],
+      "ip": false
+    }
+  }
+}
+```
 
 Bu metot API Kodunun yetkili kullanıcısına ait bilgileri listeler.
 
