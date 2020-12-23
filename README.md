@@ -1,4 +1,4 @@
-<img src="https://veyosis.com/assets/img/logo-api-docs.png" width="200"/>
+<img src="https://veyosis.com/assets/img/logo-dark.png" width="200"/>
 
 # VEYOSIS API DOCS
 
