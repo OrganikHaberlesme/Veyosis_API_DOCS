@@ -10,9 +10,9 @@ VEYOSİS API ile VEYOSİS Web arayüzünden gerçekleştirdiğiniz hemem hemen t
 
 Tüm metodların HTTP istek ve cevap mesajlarında `JSON` söz dizimi standardı kullanılmıştır.Güvenli API‘ lerin erişiminde HTTP Authorization protokolü takip edilmektedir.Bu doğrultuda Kimlik Yönetimi metotlarıyla alınan erişim jetonu(“access token”) kullanılarak İzin Yönetim metotlarıyla güvenli veri alışverişi sağlanmaktadır.
 
-# TANIMLAR
+## TANIMLAR
 VEYOSİS API'sinde kullanılacak olan teknik terimler ve açıklamalar bu bölümde yer alacaktır. Güncellemeler oldukça bu bölümde ekleme ve  - Alıcı (`recipient`): Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. Kişisel bilgiler (ad, soyad, adres vs.) bir izinde yer almaz.
-- İzin Tipi (`type`): Vatandaşın izin verdiği iletişim kanalıdır. İYS üzerinde şu an için sadece `ARAMA`, `MESAJ` ve `EPOSTA` kanalları için izinler saklanmaktadır.
+- İzin Tipi (`type`): Vatandaşın izin verdiği iletişim kanalıdır. `"ARAMA"` `"MESAJ"` `"EPOSTA"`İYS üzerinde şu an için sadece `ARAMA`, `MESAJ` ve `EPOSTA` kanalları için izinler saklanmaktadır.
 - Alıcı Tipi (`recipientType`): İznin tacir veya bireysel amaçla alındığını ifade eder.
 - İzin Kaynağı (`source`): Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir.
 - İzin Durumu (`status`): Vatandaşın izin durumunu gösterir. ONAY veya RET olabilir.
@@ -81,6 +81,7 @@ VEYOSIS API ile işlem gerçekleştirmek istiyorsanız öncelikle bir `API KOD`u
 Eğer API kodunuz yoksa;
  - https://panel.veyosis.com adresi üzerinde kaydınız olması gerekmektedir.
  - Kayıt işlemlerinin ardından oturum açmalısınız.
+ - `API KOD` oluşturabilmek için VEYOSIS PANEL'e abone olunması ve IYS KODUnuzun eklenmiş olması gerekmektedir.
  - `API Erişimi` menüsünden Yeni API Kodu oluşturabilirsiniz.
 
 ## API Kodu Yetkileri
@@ -228,7 +229,7 @@ Reponse Body:
 | ---- | ---------- | ----------- | -------- | ---- |
 | brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
 | recipient | post | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
-| type | post | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
+| type | post | Vatandaşın izin verdiği iletişim kanalıdır. `"ARAMA"` `"MESAJ"` `"EPOSTA"`| Yes | string |
 | source | post | Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir. | Yes | string |
 | status | post | Vatandaşın izin durumunu gösterir. | Yes | string |
 | consentDate | post | İznin, vatandaştan alındığı tarihtir. | Yes | string |
@@ -304,7 +305,7 @@ Reponse Body:
 | ---- | ---------- | ----------- | -------- | ---- |
 | brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
 | recipient | post | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
-| type | post | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
+| type | post | Vatandaşın izin verdiği iletişim kanalıdır. `"ARAMA"` `"MESAJ"` `"EPOSTA"`| Yes | string |
 | source | post | Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir. | Yes | string |
 | status | post | Vatandaşın izin durumunu gösterir. | Yes | string |
 | consentDate | post | İznin, vatandaştan alındığı tarihtir. | Yes | string |
@@ -428,7 +429,7 @@ Reponse Body:
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
-| type | post | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
+| type | post | Vatandaşın izin verdiği iletişim kanalıdır. `"ARAMA"` `"MESAJ"` `"EPOSTA"`| Yes | string |
 | recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
 | recipient | post | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
 
@@ -497,7 +498,7 @@ Reponse Body:
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
-| type | post | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
+| type | post | Vatandaşın izin verdiği iletişim kanalıdır. `"ARAMA"` `"MESAJ"` `"EPOSTA"`| Yes | string |
 | recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
 | recipient | post | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
 
