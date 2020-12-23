@@ -227,12 +227,12 @@ Reponse Body:
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
-| recipient | path | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
-| type | path | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
-| source | path | Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir. | Yes | string |
-| status | path | Vatandaşın izin durumunu gösterir. | Yes | string |
-| consentDate | path | İznin, vatandaştan alındığı tarihtir. | Yes | string |
-| recipientType | path | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
+| recipient | post | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
+| type | post | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
+| source | post | Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir. | Yes | string |
+| status | post | Vatandaşın izin durumunu gösterir. | Yes | string |
+| consentDate | post | İznin, vatandaştan alındığı tarihtir. | Yes | string |
+| recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
 
 ### Başarılı Yanıt
 Response Headers:
@@ -303,12 +303,12 @@ Reponse Body:
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
-| recipient | path | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
-| type | path | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
-| source | path | Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir. | Yes | string |
-| status | path | Vatandaşın izin durumunu gösterir. | Yes | string |
-| consentDate | path | İznin, vatandaştan alındığı tarihtir. | Yes | string |
-| recipientType | path | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
+| recipient | post | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
+| type | post | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
+| source | post | Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir. | Yes | string |
+| status | post | Vatandaşın izin durumunu gösterir. | Yes | string |
+| consentDate | post | İznin, vatandaştan alındığı tarihtir. | Yes | string |
+| recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
 
 ### Başarılı Yanıt
 Response Headers:
@@ -428,9 +428,9 @@ Reponse Body:
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
-| type | path | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
-| recipientType | path | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
-| recipient | path | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
+| type | post | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
+| recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
+| recipient | post | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
 
 ### Başarılı Yanıt
 Response Headers:
@@ -497,9 +497,9 @@ Reponse Body:
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
-| type | path | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
-| recipientType | path | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
-| recipient | path | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
+| type | post | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
+| recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
+| recipient | post | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
 
 ### Başarılı Yanıt
 Response Headers:
