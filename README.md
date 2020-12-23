@@ -10,6 +10,8 @@ VEYOSİS API ile VEYOSİS Web arayüzünden gerçekleştirdiğiniz hemem hemen t
 
 Tüm metodların HTTP istek ve cevap mesajlarında `JSON` söz dizimi standardı kullanılmıştır.Güvenli API‘ lerin erişiminde HTTP Authorization protokolü takip edilmektedir.Bu doğrultuda Kimlik Yönetimi metotlarıyla alınan erişim jetonu(“access token”) kullanılarak İzin Yönetim metotlarıyla güvenli veri alışverişi sağlanmaktadır.
 
+VEYOSIS API ile ilgili tüm sorunlarınızı [Github](https://github.com/OrganikHaberlesme/Veyosis_API_DOCS/issues) üzerinden iletebilirsiniz.
+
 ## TANIMLAR
 VEYOSİS API'sinde kullanılacak olan teknik terimler ve açıklamalar bu bölümde yer alacaktır. Güncellemeler oldukça bu bölümde ekleme ve  - Alıcı (`recipient`): Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. Kişisel bilgiler (ad, soyad, adres vs.) bir izinde yer almaz.
 - İzin Tipi (`type`): Vatandaşın izin verdiği iletişim kanalıdır.İYS üzerinde şu an için sadece `ARAMA`, `MESAJ` ve `EPOSTA` kanalları için izinler saklanmaktadır.
