@@ -201,7 +201,7 @@ Reponse Body:
 
 Vatandaştan alınan tek **bir** izni kaydeder.
 
-### /consent/single/{brand}
+> `API_URL` /consent/single/{brand}
 
 ### Örnek İstek Gövdesi
 Response Headers:
@@ -267,7 +267,7 @@ Reponse Body:
 
 **Tek** markaya asenkron bir şekilde çoklu izin ekler.
 
-### /consent/async/{brand}
+> `API_URL` /consent/async/{brand}
 
 ### Örnek İstek Gövdesi
 Response Headers:
@@ -397,7 +397,7 @@ Reponse Body:
 | 402 | Payment Required |
 | 404 | Not Found |
 
-### /report/single/{brand}
+> `API_URL` /report/single/{brand}
 
 #### POST
 ##### Summary:
@@ -457,7 +457,7 @@ Tek seferde en fazla 1.000 adet izin yüklenebilir.
 | 422 | Unprocessable entity |
 | 500 | Internal Server Error |
 
-### /report/status/{transaction}
+> `API_URL` /report/status/{transaction}
 
 #### GET
 ##### Summary:
