@@ -195,10 +195,21 @@ Reponse Body:
 | 402 | Payment Required |
 | 404 | Not Found |
 
+# İZİN YÖNETİMİ
+
+## Tekil İzin Ekleme
+
 ### /consent/single/{brand}
 
-#### POST
-##### Summary:
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
+
+|Değişken|Gereklilik|Tip|Açıklama|
+|-|-|-|-|
+|deliveries|Zorunlu|-|İstek gövdenizin ana elemanıdır. Tüm istekleriniz`data`etiketinin içinde olmalıdır.|
 
 Tekil İzin Ekleme
 
@@ -206,11 +217,7 @@ Tekil İzin Ekleme
 
 Vatandaştan alınan tek **bir** izni kaydeder.
 
-##### Parameters
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
 
 ##### Responses
 
