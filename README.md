@@ -2,9 +2,23 @@
 
 # VEYOSIS API DOCS
 
-API'ye gönderdiğiniz isteklerin ve aldığınız yanıtların tümü tek bir URL üzerinden çalışır. API farklı komutlar için farklı metodlarla çalışır. Genel olarak bu metodlar GET ve POST'tur. Hangi fonksiyonun, hangi metodla çalıştığı ilgili sayfalarda belirtilmiştir.
-# VEYOSIS API
-VEYOSİS API'yi kullanmak veya görüşlerinizi bizimle paylaşmak isterseniz lütfen bizimle info@veyosis.com adresi üzerinden iletişime geçiniz.
+## API Hakkında
+
+VEYOSİS API ile VEYOSİS Web arayüzünden gerçekleştirdiğiniz hemem hemen tüm işlemleri web arayüzüdne oturum açmadan gerçekleştirebilirsiniz.
+
+  - API hizmetimizin `BASE_URL`'i **https://api.veyosis.com** şeklindedir.
+  
+Tüm metodların HTTP istek ve cevap mesajlarında `JSON` söz dizimi standardı kullanılmıştır.Güvenli API‘ lerin erişiminde HTTP Authorization protokolü takip edilmektedir.Bu doğrultuda Kimlik Yönetimi metotlarıyla alınan erişim jetonu(“access token”) kullanılarak İzin Yönetim metotlarıyla güvenli veri alışverişi sağlanmaktadır.
+
+# TANIMLAR
+VEYOSİS API'sinde kullanılacak olan teknik terimler ve açıklamalar bu bölümde yer alacaktır. Güncellemeler oldukça bu bölümde ekleme ve  - Alıcı (`recipient`): Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. Kişisel bilgiler (ad, soyad, adres vs.) bir izinde yer almaz.
+- İzin Tipi (`type`): Vatandaşın izin verdiği iletişim kanalıdır. İYS üzerinde şu an için sadece `ARAMA`, `MESAJ` ve `EPOSTA` kanalları için izinler saklanmaktadır.
+- Alıcı Tipi (`recipientType`): İznin tacir veya bireysel amaçla alındığını ifade eder.
+- İzin Kaynağı (`source`): Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir.
+- İzin Durumu (`status`): Vatandaşın izin durumunu gösterir. ONAY veya RET olabilir.
+- İzin Tarihi (`consentDate`): İznin, vatandaştan alındığı tarihtir. Alıcı tipi TACIR ise eklenmesi zorunlu değildir.
+- İzinlerin tarih formatı `YYYY-MM-DD HH:mm:ss`, saat dilimi `Türkiye saati` kabul edilir.
+
 
 ## Version: v1.0
 
@@ -14,23 +28,6 @@ Bu metot API Kodunun yetkili kullanıcısına ait bilgileri listeler.
 
 ##### Responses
 
-```
-{
-"data": {
-    "user": "Örnek Kullanıcı",
-    "username": "kullanici",
-    "email": "mail@example.com",
-    "company": "Örnek Firma Ltd.şti.",
-    "title": "Örnek API",
-    "permissions": [
-      "brand",
-      "consent",
-      "report"
-    ],
-    "ip": false
-  }
-}
-```
 
 | Code | Description |
 | ---- | ----------- |
