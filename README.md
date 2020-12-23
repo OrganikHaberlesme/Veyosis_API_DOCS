@@ -12,7 +12,7 @@ Tüm metodların HTTP istek ve cevap mesajlarında `JSON` söz dizimi standardı
 
 ## TANIMLAR
 VEYOSİS API'sinde kullanılacak olan teknik terimler ve açıklamalar bu bölümde yer alacaktır. Güncellemeler oldukça bu bölümde ekleme ve  - Alıcı (`recipient`): Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. Kişisel bilgiler (ad, soyad, adres vs.) bir izinde yer almaz.
-- İzin Tipi (`type`): Vatandaşın izin verdiği iletişim kanalıdır. `"ARAMA"` `"MESAJ"` `"EPOSTA"`İYS üzerinde şu an için sadece `ARAMA`, `MESAJ` ve `EPOSTA` kanalları için izinler saklanmaktadır.
+- İzin Tipi (`type`): Vatandaşın izin verdiği iletişim kanalıdır.İYS üzerinde şu an için sadece `ARAMA`, `MESAJ` ve `EPOSTA` kanalları için izinler saklanmaktadır.
 - Alıcı Tipi (`recipientType`): İznin tacir veya bireysel amaçla alındığını ifade eder.
 - İzin Kaynağı (`source`): Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir.
 - İzin Durumu (`status`): Vatandaşın izin durumunu gösterir. ONAY veya RET olabilir.
@@ -231,9 +231,9 @@ Reponse Body:
 | recipient | post | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
 | type | post | Vatandaşın izin verdiği iletişim kanalıdır. `"ARAMA"` `"MESAJ"` `"EPOSTA"`| Yes | string |
 | source | post | Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir. | Yes | string |
-| status | post | Vatandaşın izin durumunu gösterir. | Yes | string |
+| status | post | Vatandaşın izin durumunu gösterir. `"ONAY"` `"RET"` | Yes | string |
 | consentDate | post | İznin, vatandaştan alındığı tarihtir. | Yes | string |
-| recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
+| recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. `"BIREYSEL"` `"TACIR"` | Yes | string |
 
 ### Başarılı Yanıt
 Response Headers:
@@ -307,9 +307,9 @@ Reponse Body:
 | recipient | post | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
 | type | post | Vatandaşın izin verdiği iletişim kanalıdır. `"ARAMA"` `"MESAJ"` `"EPOSTA"`| Yes | string |
 | source | post | Vatandaşın izin durumu belirlediği kaynaktır. Alıcı tipi `TACIR` ise eklenmesi zorunlu değildir. | Yes | string |
-| status | post | Vatandaşın izin durumunu gösterir. | Yes | string |
+| status | post | Vatandaşın izin durumunu gösterir. `"ONAY"` `"RET"` | Yes | string |
 | consentDate | post | İznin, vatandaştan alındığı tarihtir. | Yes | string |
-| recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
+| recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. `"BIREYSEL"` `"TACIR"` | Yes | string |
 
 ### Başarılı Yanıt
 Response Headers:
@@ -430,7 +430,7 @@ Reponse Body:
 | ---- | ---------- | ----------- | -------- | ---- |
 | brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
 | type | post | Vatandaşın izin verdiği iletişim kanalıdır. `"ARAMA"` `"MESAJ"` `"EPOSTA"`| Yes | string |
-| recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
+| recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. `"BIREYSEL"` `"TACIR"` | Yes | string |
 | recipient | post | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
 
 ### Başarılı Yanıt
@@ -499,7 +499,7 @@ Reponse Body:
 | ---- | ---------- | ----------- | -------- | ---- |
 | brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
 | type | post | Vatandaşın izin verdiği iletişim kanalıdır. `"ARAMA"` `"MESAJ"` `"EPOSTA"`| Yes | string |
-| recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
+| recipientType | post | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. `"BIREYSEL"` `"TACIR"` | Yes | string |
 | recipient | post | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
 
 ### Başarılı Yanıt
