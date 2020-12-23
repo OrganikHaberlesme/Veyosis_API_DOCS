@@ -6,7 +6,7 @@
 
 VEYOSİS API ile VEYOSİS Web arayüzünden gerçekleştirdiğiniz hemem hemen tüm işlemleri web arayüzüdne oturum açmadan gerçekleştirebilirsiniz.
 
-  - API hizmetimizin `BASE_URL`'i **https://api.veyosis.com** şeklindedir.
+  - API hizmetimizin `BASE_URL`'i `https://api.veyosis.com` şeklindedir.
   
 Tüm metodların HTTP istek ve cevap mesajlarında `JSON` söz dizimi standardı kullanılmıştır.Güvenli API‘ lerin erişiminde HTTP Authorization protokolü takip edilmektedir.Bu doğrultuda Kimlik Yönetimi metotlarıyla alınan erişim jetonu(“access token”) kullanılarak İzin Yönetim metotlarıyla güvenli veri alışverişi sağlanmaktadır.
 
@@ -20,7 +20,45 @@ VEYOSİS API'sinde kullanılacak olan teknik terimler ve açıklamalar bu bölü
 - İzinlerin tarih formatı `YYYY-MM-DD HH:mm:ss`, saat dilimi `Türkiye saati` kabul edilir.
 
 
-## Version: v1.0
+## İzin Kaynakları
+
+|Değer| Açıklama|
+|------|--------|
+|`HS_2015`|Alıcı, 1 Mayıs 2015 tarihi öncesinde onaylı olarak kaydedilmiştir.|
+|`HS_KARAR`|İzin durumu, hizmet sağlayıcının kendi isteğiyle RET olarak belirlenmiştir. Hizmet sağlayıcı, ilk izin ekleme işleminde HS_KARAR kaynak(source) değerini kullanamamaktadır.|
+|`HS_FIZIKSEL_ORTAM`|İzin, hizmet sağlayıcı tarafından fiziksel ortamda alınmıştır.|
+|`HS_ISLAK_IMZA`|İzin, alıcının bir formu veya anketi imzalaması üzerine alınmıştır.|
+|`HS_ETKINLIK`|İzin, hizmet sağlayıcının düzenlediği bir etkinlikte alınmıştır.||
+|`HS_ATM`| İzin, hizmet sağlayıcıya ait yerleşik ATM cihazıyla alınmıştır.|
+|`HS_EORTAM`| İzin, hizmet sağlayıcıya ait bir elektronik ortamda alınmıştır.|
+|`HS_WEB`| İzin, hizmet sağlayıcının web sitesi üzerinde yapılan bir işlemle alınmıştır.|
+|`HS_MOBIL`| İzin, hizmet sağlayıcıya ait mobil uygulama üzerinden alınmıştır.|
+|`HS_MESAJ`| İzin, hizmet sağlayıcıya ait kısa mesaj numarası üzerinden alınmıştır.|
+|`HS_EPOSTA`| İzin, hizmet sağlayıcıya ait e-posta vasıtasıyla alınmıştır.|
+|`HS_CAGRI_MERKEZI`| İzin, hizmet sağlayıcıya bağlı bir çağrı merkezinde sesle veya numara tuşlamayla alınmıştır.|
+|`HS_SOSYAL_MEDYA`| İzin, hizmet sağlayıcıya ait sosyal medya aracı üzerinden alınmıştır.|
+
+## İzin Türleri
+
+Hizmet sağlayıcının, ticari elektronik ileti gönderimi yaptığı iletişim kanalını (arama, mesaj, e-posta) ifade eder.
+- İzin Türü (type)
+  - Telefon (`+902121230000` gibi `[+][ülke kodu][alan kodu][telefon no]` şeklinde E164 uluslararası formata uygun verilmesi gerekmektedir. Maksimum uzunluk 15 olabilir.)
+  
+|Değer| Açıklama|
+|----------|--------------|
+|`ARAMA`| Alıcıların telefon numarasına ilişkin arama bazlı izinleri ifade eder.|
+|`MESAJ`| Alıcıların telefon numarasına ilişkin mesaj bazlı izinleri ifade eder.|
+
+- İzin Türü (type)\n  
+  - E-posta   
+  **Şartlar** 
+    - Tüm e-posta adresleri [regEx](https://regex101.com/r/yEyjL3/27) örneğiyle uyumlu olmalıdır.
+    - Türkçe harfler kullanılamaz.
+    - Özel karakterler kullanılamaz. Örnek: `{[(!' ^ % & /()=?,”½²³°¶)}]` vb.
+    - Geçerli bir e-posta, asgari [{1 karakter}@{2 karakter}.{2 karakter}] şablonunda olmalıdır.
+    - Bir e-posta adresinin uzunluğu en az 6, en fazla 265 karakter olabilir.
+    - {@} işaretinden önceki kısımda, e-posta servis sağlayıcıların etiketleme (`label`) yapmak için kabul ettiği özel karakter olarak artı işareti ( + ) kullanılabilir.
+    - Bir e-posta adresi boşluk içeremez.
 
 > `API_URL` /me
 
