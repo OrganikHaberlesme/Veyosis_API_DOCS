@@ -1,5 +1,8 @@
-# Veyosis_API_DOCS
-Veyosis.com API Dökümanları
+# VEYOSIS API DOCS
+
+[<img src="https://veyosis.com/assets/img/logo-api-docs.png" width="200"/>](image.png)
+
+API'ye gönderdiğiniz isteklerin ve aldığınız yanıtların tümü tek bir URL üzerinden çalışır. API farklı komutlar için farklı metodlarla çalışır. Genel olarak bu metodlar GET ve POST'tur. Hangi fonksiyonun, hangi metodla çalıştığı ilgili sayfalarda belirtilmiştir.
 # VEYOSIS API
 VEYOSİS API'yi kullanmak veya görüşlerinizi bizimle paylaşmak isterseniz lütfen bizimle info@veyosis.com adresi üzerinden iletişime geçiniz.
 
