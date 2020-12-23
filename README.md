@@ -7,7 +7,7 @@
 VEYOSİS API ile VEYOSİS Web arayüzünden gerçekleştirdiğiniz hemem hemen tüm işlemleri web arayüzüdne oturum açmadan gerçekleştirebilirsiniz.
 
   - API hizmetimizin `BASE_URL`'i `https://api.veyosis.com` şeklindedir.
-  
+
 Tüm metodların HTTP istek ve cevap mesajlarında `JSON` söz dizimi standardı kullanılmıştır.Güvenli API‘ lerin erişiminde HTTP Authorization protokolü takip edilmektedir.Bu doğrultuda Kimlik Yönetimi metotlarıyla alınan erişim jetonu(“access token”) kullanılarak İzin Yönetim metotlarıyla güvenli veri alışverişi sağlanmaktadır.
 
 # TANIMLAR
@@ -43,7 +43,7 @@ VEYOSİS API'sinde kullanılacak olan teknik terimler ve açıklamalar bu bölü
 Hizmet sağlayıcının, ticari elektronik ileti gönderimi yaptığı iletişim kanalını (arama, mesaj, e-posta) ifade eder.
 - İzin Türü (type)
   - Telefon (`+902121230000` gibi `[+][ülke kodu][alan kodu][telefon no]` şeklinde E164 uluslararası formata uygun verilmesi gerekmektedir. Maksimum uzunluk 15 olabilir.)
-  
+
 |Değer| Açıklama|
 |----------|--------------|
 |`ARAMA`| Alıcıların telefon numarasına ilişkin arama bazlı izinleri ifade eder.|
@@ -51,7 +51,7 @@ Hizmet sağlayıcının, ticari elektronik ileti gönderimi yaptığı iletişim
 
 - İzin Türü (type)\n  
   - E-posta   
-  **Şartlar** 
+  **Şartlar**
     - Tüm e-posta adresleri [regEx](https://regex101.com/r/yEyjL3/27) örneğiyle uyumlu olmalıdır.
     - Türkçe harfler kullanılamaz.
     - Özel karakterler kullanılamaz. Örnek: `{[(!' ^ % & /()=?,”½²³°¶)}]` vb.
@@ -59,7 +59,7 @@ Hizmet sağlayıcının, ticari elektronik ileti gönderimi yaptığı iletişim
     - Bir e-posta adresinin uzunluğu en az 6, en fazla 265 karakter olabilir.
     - {@} işaretinden önceki kısımda, e-posta servis sağlayıcıların etiketleme (`label`) yapmak için kabul ettiği özel karakter olarak artı işareti ( + ) kullanılabilir.
     - Bir e-posta adresi boşluk içeremez.
-    
+
 |Değer| Açıklama|
 |-------------|---------------------|
 |`EPOSTA`|Alıcıların elektronik posta adreslerine ilişkin e-posta bazlı izinleri ifade eder.|
@@ -82,7 +82,7 @@ Eğer API kodunuz yoksa;
  - https://panel.veyosis.com adresi üzerinde kaydınız olması gerekmektedir.
  - Kayıt işlemlerinin ardından oturum açmalısınız.
  - `API Erişimi` menüsünden Yeni API Kodu oluşturabilirsiniz.
- 
+
 ## API Kodu Yetkileri
 |İzin| Açıklama|
 |----------------|------------------- |
@@ -93,7 +93,7 @@ Eğer API kodunuz yoksa;
 
 ## API Bağlantısı
 Oluşturduğunuz API kodunu endpointlere ulaşmak için gönderdiğiniz sorgulara `Authorization` header'ı olarak `Bearer XYZXYZXYZ` şeklinde eklemeniz gerekiyor.
- 
+
 ## Kullanıcı Bilgileri
 Bu metot API Kodunun yetkili kullanıcısına ait bilgileri listeler.
 
@@ -263,8 +263,6 @@ Reponse Body:
 | 500 | Internal Server Error |
 
 
-# XXXXXXXXXXXXXXXX
-
 ## Çoklu İzin Ekleme
 
 **Tek** markaya asenkron bir şekilde çoklu izin ekler.
@@ -340,44 +338,7 @@ Reponse Body:
 | 422 | Unprocessable entity |
 | 500 | Internal Server Error |
 
-# YYYYYYY
-
-### /consent/async/{brand}
-
-#### POST
-##### Summary:
-
-Çoklu İzin Ekleme
-
-##### Description:
-
-**Tek** markaya asenkron bir şekilde çoklu izin ekler.
-
-Tek seferde en fazla 1.000 adet izin yüklenebilir.
-
-Metotdan dönen `transaction` değeri ile [Çoklu İzin Ekleme Durumu](#operation/consentStatus) metodu ile kuyruk durumunu kontrol edilebilir.
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | İzin ekleme işlemi başarılı. |
-
-
-### /consent/status/{transaction}
-
-#### GET
-##### Summary:
-
-Çoklu İzin Ekleme Durumu
-
-##### Description:
+## Çoklu İzin Ekleme Durumu
 
 Çoklu İzin Ekleme metoduyla eklenen izinlerin durumu kontrol edilir.
 
@@ -387,15 +348,51 @@ Kontrol işlemi [Çoklu İzin Ekleme](#operation/consentAsync) metodundan dönen
 
 ##### Parameters
 
-| Name | Located in | Description | Required | Schema |
+| Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | transaction | path | Çoklu izin ekleme metodundan dönen `transaction` kodu. | Yes | integer |
 
-##### Responses
+> `API_URL` /consent/status/{transaction}
+### Başarılı Yanıt
+Response Headers:
+```
+Method:       GET
+Status:       200 OK
+URL:          /consent/status/{transaction}
+Content-Type: application/json
+```
+Reponse Body:
+```
+{
+  "data": [
+    {
+      "type": "MESAJ",
+      "recipientType": "BIREYSEL",
+      "recipient": "+905000000001",
+      "source": "HS_FIZIKSEL_ORTAM",
+      "consentDate": "2020-12-10 10:00:00",
+      "status": "RET",
+      "result": "success"
+    },
+    {
+      "type": "EPOSTA",
+      "recipientType": "BIREYSEL",
+      "recipient": "mail@example.com",
+      "source": "HS_2015",
+      "consentDate": "2015-05-01 00:00:00",
+      "status": "ONAY",
+      "result": "failure",
+      "error": {
+        "message": "Sistemdeki iznin tarihinden önceki tarihli izinlerle güncelleme yapılamaz."
+      }
+    }
+  ]
+}
+```
+### Başarısız Yanıtlar
 
 | Code | Description |
 | ---- | ----------- |
-| 200 | İşlem Başarılı |
 | 401 | Unauthorized |
 | 402 | Payment Required |
 | 404 | Not Found |
