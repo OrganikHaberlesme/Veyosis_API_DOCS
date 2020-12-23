@@ -74,6 +74,26 @@ Alıcının ticari elektronik ileti gönderimine ilişkin izin durumunu (onay/re
 |`ONAY`|Alıcının, hizmet sağlayıcının ticari elektronik ileti göndermesini onayladığını ifade eder.|
 |`RET`|Alıcının, hizmet sağlayıcının ticari elektronik ileti göndermesini onaylamadığını ifade eder.|
 
+# KİMLİK DOĞRULAMA
+
+## API Kodu Oluşturma
+VEYOSIS API ile işlem gerçekleştirmek istiyorsanız öncelikle bir `API KOD`unuzun olması gerekmektedir.
+Eğer API kodunuz yoksa;
+ - https://panel.veyosis.com adresi üzerinde kaydınız olması gerekmektedir.
+ - Kayıt işlemlerinin ardından oturum açmalısınız.
+ - `API Erişimi` menüsünden Yeni API Kodu oluşturabilirsiniz.
+ 
+## API Kodu Yetkileri
+|İzin| Açıklama|
+|----------------|------------------- |
+| `Marka İşlemleri` |Yetkisi ile marka işlemleri izni verilir.|
+| `İzin Yönetimi` | Yetkisi ile izin işlemlerinin tümü gerçekleştirilebilir.|
+| `İzin Sorgulama` | Yetkisiyle izin sorgulama işlemlerine izin verilir.|
+| `Ip Kısıtlama` | Özelliği aktif edildiğinde istenilen IP dışındaki adreslerin erişimi engellenir.|
+
+## API Bağlantısı
+Oluşturduğunuz API kodunu endpointlere ulaşmak için gönderdiğiniz sorgulara `Authorization` header'ı olarak `Bearer XYZXYZXYZ` şeklinde eklemeniz gerekiyor.
+ 
 > `API_URL` /me
 
 Bu metot API Kodunun yetkili kullanıcısına ait bilgileri listeler.
