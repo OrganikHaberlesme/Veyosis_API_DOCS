@@ -346,13 +346,15 @@ Kontrol işlemi [Çoklu İzin Ekleme](#çoklu-i̇zin-ekleme) metodundan dönen `
 
 Çoklu veri ekleme sonuçları sistemde **1**(bir) hafta tutulur.
 
+
+> `API_URL` /consent/status/{transaction}
+
 ##### Parameters
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | transaction | path | Çoklu izin ekleme metodundan dönen `transaction` kodu. | Yes | integer |
 
-> `API_URL` /consent/status/{transaction}
 ### Başarılı Yanıt
 Response Headers:
 ```
@@ -396,6 +398,8 @@ Reponse Body:
 | 401 | Unauthorized |
 | 402 | Payment Required |
 | 404 | Not Found |
+
+# İZİN SORGULAMA
 
 ## Tekil İzin Sorgulama
 
@@ -459,30 +463,65 @@ Reponse Body:
 | 422 | Unprocessable entity |
 | 500 | Internal Server Error |
 
-> `API_URL` /report/async/{brand}
 
-#### POST
-##### Summary:
-
-Çoklu İzin Sorgulama
-
-##### Description:
+# Çoklu İzin Sorgulama
 
 Çoklu izin durumunu kontrol eden metoddur.
 
 Tek seferde en fazla 1.000 adet izin yüklenebilir.
 
+> `API_URL` /report/async/{brand}
+
+### Örnek İstek Gövdesi
+Response Headers:
+```
+Method:       POST
+Status:       200 OK
+URL:          /report/async/{brand}
+Content-Type: application/json
+```
+Reponse Body:
+```
+{
+  "type": "MESAJ",
+  "recipientType": "BIREYSEL",
+  "recipients": [
+    "905000000001",
+    "905000000002"
+  ]
+}
+```
+
 ##### Parameters
 
-| Name | Located in | Description | Required | Schema |
+| Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | brand | path | Hizmet sağlayıcının markasına özel kod(code) bilgisidir. | Yes | integer |
+| type | path | Vatandaşın izin verdiği iletişim kanalıdır. | Yes | string |
+| recipientType | path | İzin kaydının tacir veya bireysel amaçla alındığını ifade eder. | Yes | string |
+| recipient | path | Vatandaşın sistemde kayıtlı telefon numarası veya e-posta bilgisidir. | Yes | string |
 
-##### Responses
+### Başarılı Yanıt
+Response Headers:
+```
+Method:       POST
+Status:       200 OK
+URL:          /report/async/{brand}
+Content-Type: application/json
+```
+Reponse Body:
+```
+{
+  "data": {
+    "transaction": 47
+  }
+}
+```
+
+##### Başarısız Yanıtlar
 
 | Code | Description |
 | ---- | ----------- |
-| 200 | İşlemi başarılı. |
 | 400 | Bad Request. |
 | 401 | Unauthorized |
 | 403 | Forbidden |
@@ -490,14 +529,10 @@ Tek seferde en fazla 1.000 adet izin yüklenebilir.
 | 422 | Unprocessable entity |
 | 500 | Internal Server Error |
 
-> `API_URL` /report/status/{transaction}
 
-#### GET
-##### Summary:
 
-Çoklu İzin Sorgulama Durumu
+# Çoklu İzin Sorgulama Durumu
 
-##### Description:
 
 Çoklu İzin Sorgulama metoduyla sorgulanan izinlerin durumu kontrol edilir.
 
@@ -505,17 +540,50 @@ Kontrol işlemi [Çoklu İzin Sorgulama](#operation/reportAsync) metodundan dön
 
 Çoklu veri ekleme sonuçları sistemde **1**(bir) hafta tutulur.
 
+> `API_URL` /report/status/{transaction}
+
 ##### Parameters
 
-| Name | Located in | Description | Required | Schema |
+| Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | transaction | path | Çoklu izin sorgulama metodundan dönen `transaction` kodu. | Yes | integer |
 
-##### Responses
+### Başarılı Yanıt
+Response Headers:
+```
+Method:       GET
+Status:       200 OK
+URL:          /report/status/{transaction}
+Content-Type: application/json
+```
+Reponse Body:
+```
+{
+  "data": [
+    {
+      "type": "MESAJ",
+      "recipientType": "BIREYSEL",
+      "recipient": "905000000001",
+      "source": "HS_FIZIKSEL_ORTAM",
+      "consentDate": "2020-12-14 16:46:00",
+      "status": "ONAY"
+    },
+    {
+      "recipient": "905555555555"
+    },
+    {
+      "recipient": "90555",
+      "error": {
+        "message": "Alıcı (recipient) için E164 uluslararası([+][country code][area code][local phone number]) formatına uygun bir telefon numarası girilmelidir. (örn. `+905992000000`)"
+      }
+    }
+  ]
+}
+```
+### Başarısız Yanıtlar
 
 | Code | Description |
 | ---- | ----------- |
-| 200 | İşlem Başarılı |
 | 401 | Unauthorized |
 | 402 | Payment Required |
 | 404 | Not Found |
