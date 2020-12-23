@@ -5,27 +5,29 @@ VEYOSİS API'yi kullanmak veya görüşlerinizi bizimle paylaşmak isterseniz l�
 
 ## Version: v1.0
 
-### Terms of service
-https://veyosis.com/privacy_and_security
-
-**Contact information:**  
-https://veyosis.com  
-info@veyosis.com  
-
-**License:** [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
-
-### /me
-
-#### GET
-##### Summary:
-
-Kullanıcı Bilgileri
-
-##### Description:
+> `API_URL` /me
 
 Bu metot API Kodunun yetkili kullanıcısına ait bilgileri listeler.
 
 ##### Responses
+
+```
+{
+"data": {
+    "user": "Örnek Kullanıcı",
+    "username": "kullanici",
+    "email": "mail@example.com",
+    "company": "Örnek Firma Ltd.şti.",
+    "title": "Örnek API",
+    "permissions": [
+      "brand",
+      "consent",
+      "report"
+    ],
+    "ip": false
+  }
+}
+```
 
 | Code | Description |
 | ---- | ----------- |
