@@ -251,7 +251,7 @@ Kontrol işlemi [Çoklu İzin Sorgulama](#operation/reportAsync) metodundan dön
 
 #### childItem
 
-| Name | Type | Description | Required |
+| Name | Type |  Description | Required |
 | ---- | ---- | ----------- | -------- |
 | ProductNumber | string |  | No |
 | Length | integer |  | No |
